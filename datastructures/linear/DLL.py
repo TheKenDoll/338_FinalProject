@@ -141,8 +141,8 @@ class DLL:
         sorted_list.tail = self.tail
         while True:
             if self.is_sorted():
-                self.head = sorted_list.head
-                self.tail = sorted_list.tail
+                sorted_list.head = self.head
+                sorted_list.tail = self.tail
                 break
             if not self.is_empty():
                 sorted_list = DLL()
@@ -153,7 +153,8 @@ class DLL:
                     current = current.get_next()
                 self.head = sorted_list.head
                 self.tail = sorted_list.tail
-        self = sorted_list
+        sorted_list.find_tail()
+        self.tail = sorted_list.get_tail()
     
     def is_sorted(self):
         # if self.sorted:
@@ -182,3 +183,10 @@ class DLL:
         while current:
             print(current.get_data())
             current = current.get_next()
+    
+    def find_tail(self):
+        current_node = self.head
+        while current_node.get_next() is not None:
+            current_node = current_node.get_next()
+        # set the tail to the last node
+        self.tail = current_node

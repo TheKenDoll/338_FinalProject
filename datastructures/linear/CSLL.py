@@ -74,4 +74,30 @@ class CSLL(SLL):
             count += 1
             if count >= self.size:
                 break
-            
+        
+    def sort(self):
+        if not self.is_empty() and not self.is_sorted():
+            sorted_list = SLL()
+            current = self.head
+            count = 0
+            while current is not None:
+                if count >= self.size:
+                    break
+                node = SNode(current.get_data())
+                sorted_list.sorted_insert(node)
+                current = current.get_next()
+
+                count += 1
+            self.head = sorted_list.head
+
+
+    def sorted_insert(self, node):
+        if self.is_empty() or node.get_data() < self.head.get_data():
+            self.insert_head(node)
+        else:
+            current = self.head
+            while current.get_next() is not None and current.get_next().get_data() < node.get_data():
+                current = current.get_next()
+            node.set_next(current.get_next())
+            current.set_next(node)
+        self.size += 1

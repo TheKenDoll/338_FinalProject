@@ -96,3 +96,21 @@ class CDLL(DLL):
             count += 1
             if count >= self.size:
                 break
+
+        
+    def sort(self):
+        for i in range(self.size):
+            if not self.is_empty() and not self.is_sorted():
+                sorted_list = DLL()
+                current = self.head
+                count = 0
+                while current is not None:
+                    if count >= self.size:
+                        break
+                    node = DNode(current.get_data())
+                    sorted_list.sorted_insert(node)
+                    current = current.get_next()
+
+                    count += 1
+                self.head = sorted_list.head
+

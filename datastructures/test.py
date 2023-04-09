@@ -24,45 +24,49 @@ sll = SLL()
 # sll.Print()
 # sll.display()
 
-# Create a doubly linked list
-dll = DLL()
+# # Create a doubly linked list
+# dll = DLL()
 
-# Insert some nodes
-dll.InsertHead(DNode(1))
-dll.InsertTail(DNode(5))
-dll.InsertTail(DNode(3))
-dll.InsertTail(DNode(7))
-dll.InsertTail(DNode(99))
-dll.InsertTail(DNode(0))
+# # Insert some nodes
+# dll.InsertHead(DNode(1))
+# dll.InsertTail(DNode(5))
+# dll.InsertTail(DNode(3))
+# dll.InsertTail(DNode(7))
+# dll.InsertTail(DNode(99))
+# dll.InsertTail(DNode(0))
 
-# Print the list
-print("DOUBLY LINKED LIST")
-dll.Print()
-dll.display()
+# # Print the list
+# print("DOUBLY LINKED LIST")
+# dll.Print()
+# dll.display()
 
 
-# debugging the sort function in DLL, it doesnt seam to be setting the tail to the right thing, so when a function trys to use it then it screws up
 
-print("DOUBLY LINKED LIST")
-dll.sort()
-dll.Print()
-dll.display()
-print("HERE")
-print(dll.get_tail().get_data())
-dll.sorted_insert(DNode(6))
-dll.Print()
-dll.display()
+# print("DOUBLY LINKED LIST")
+# dll.sort()
+# dll.sorted_insert(DNode(6))
+# dll.Print()
+# dll.display()
 
 # # Create a circular singly linked list
 # scll = CSLL()
 
 # # Insert some nodes
-# scll.InsertHead(SNode(data=1))
+# scll.InsertHead(SNode(1))
 # scll.InsertTail(SNode(2))
 # scll.InsertTail(SNode(3))
+# scll.InsertTail(SNode(43))
+# scll.InsertTail(SNode(6))
+# scll.InsertTail(SNode(99))
 
 # # Print the list
 # print("CIRCULAR SINGLY LINKED LIST")
+# scll.Print()
+# scll.display()
+
+# print("CIRCULAR SINGLY LINKED LIST")
+# scll.sort()
+# scll.sorted_insert(SNode(5))
 # scll.Print()
 # scll.display()
 
@@ -71,11 +75,20 @@ dll.display()
 
 # # Insert some nodes
 # cdll.InsertHead(DNode(1))
-# cdll.InsertTail(DNode(2))
-# cdll.InsertTail(DNode(3))
+# cdll.InsertTail(DNode(4))
+# cdll.InsertTail(DNode(96))
+# cdll.InsertTail(DNode(6))
+# cdll.InsertTail(DNode(99))
+# cdll.InsertTail(DNode(68))
 
 # # Print the list
 # print("CIRCULAR DOUBLY LINKED LIST")
+# cdll.Print()
+# cdll.display()
+
+# print("CIRCULAR DOUBLY LINKED LIST")
+# cdll.sort()
+# cdll.sorted_insert(DNode(10))
 # cdll.Print()
 # cdll.display()
 
