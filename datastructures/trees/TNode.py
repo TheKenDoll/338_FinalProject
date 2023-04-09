@@ -2,12 +2,16 @@
 
 
 class TNode:
-    def __init__(self, data, balance, P, L, R) -> None:
+    def __init__(self, data=None, balance=0, P=None, L=None, R=None) -> None:
         self.data = data
         self.balance = balance
         self.P = P
         self.L = L
         self.R = R
+
+    @classmethod
+    def TNode(cls, data, balance, P, L, R):
+        return cls(data, balance, P, L , R)
 
     def setData(self, data):
         self.data = data
@@ -40,7 +44,9 @@ class TNode:
         return self.R
 
     def print(self):
-        return f"P: {self.P}, L: {self.L}, R: {self.R}"
+        if self.balance == -1:
+            return "Does not exist in tree"
+        return f"Data: {self.data}, Balance: {self.balance}, P: {self.P}, L: {self.L}, R: {self.R}"
     
     def toString(self):
         return str(self.data)
