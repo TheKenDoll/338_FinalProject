@@ -8,27 +8,39 @@ class DLL:
         self.size = 0
         self.sorted = True
 
+    def get_tail(self):
+        return self.tail
+
     def InsertHead(self, node):
         if not self.head:
             self.head = node
             self.tail = node
         else:
-            node.SetNext(self.head)
-            self.head.SetPrev(node)
+            node.set_next(self.head)
+            self.head.set_next(node)
             self.head = node
         self.size += 1
         self.sorted = False
+
+
 
     def InsertTail(self, node):
         if not self.tail:
             self.head = node
             self.tail = node
         else:
-            self.tail.SetNext(node)
-            node.SetPrev(self.tail)
+            self.tail.set_next(node)
+            node.set_prev(self.tail)
             self.tail = node
         self.size += 1
         self.sorted = False
+
+    def display(self):
+        current = self.head
+        while current is not None:
+            print(current.get_data(), end=' -> ')
+            current = current.get_next()
+        print("None")
 
     def Insert(self, node, position):
         if position <= 0:
@@ -39,43 +51,44 @@ class DLL:
             current = self.head
             count = 0
             while count < position:
-                current = current.GetNext()
+                current = current.get_next()
                 count += 1
-            node.SetNext(current)
-            node.SetPrev(current.GetPrev())
-            current.GetPrev().SetNext(node)
-            current.SetPrev(node)
+            node.set_next(current)
+            node.set_prev(current.GetPrev())
+            current.GetPrev().set_next(node)
+            current.set_prev(node)
             self.size += 1
             self.sorted = False
 
-    def SortedInsert(self, node):
+    def sorted_insert(self, node):
         if not self.head:
             self.InsertHead(node)
-        elif self.sorted and node.GetData() < self.head.GetData():
+        elif self.sorted and node.get_data() < self.head.get_data():
             self.InsertHead(node)
-        elif self.sorted and node.GetData() > self.tail.GetData():
+        elif self.sorted and node.get_data() > self.tail.get_data():
             self.InsertTail(node)
         else:
             current = self.head
-            while current.GetNext() and current.GetNext().GetData() < node.GetData():
-                current = current.GetNext()
+            while current.get_next() and current.get_next().get_data() < node.get_data():
+                current = current.get_next()
             if current is self.head:
-                node.SetNext(self.head)
-                self.head.SetPrev(node)
+                node.set_next(self.head)
+                self.head.set_prev(node)
                 self.head = node
             else:
-                node.SetNext(current.GetNext())
-                node.SetPrev(current)
-                current.GetNext().SetPrev(node)
-                current.SetNext(node)
+                node.set_next(current.get_next())
+                node.set_prev(current)
+                if current.get_next() != None:
+                    current.get_next().set_prev(node)
+                current.set_next(node)
             self.size += 1
 
     def Search(self, node):
         current = self.head
         while current:
-            if current.GetData() == node.GetData():
+            if current.get_data() == node.get_data():
                 return current
-            current = current.GetNext()
+            current = current.get_next()
         return None
 
     def DeleteHead(self):
@@ -85,8 +98,8 @@ class DLL:
             self.head = None
             self.tail = None
         else:
-            self.head = self.head.GetNext()
-            self.head.SetPrev(None)
+            self.head = self.head.get_next()
+            self.head.set_prev(None)
         self.size -= 1
 
     def DeleteTail(self):
@@ -97,31 +110,75 @@ class DLL:
             self.tail = None
         else:
             self.tail = self.tail.GetPrev()
-            self.tail.SetNext(None)
+            self.tail.set_next(None)
         self.size -= 1
+    
+    def is_empty(self):
+        return self.head is None
 
     def Delete(self, node):
         current = self.head
         while current:
             if current == node:
                 if current is self.head:
-                    self.head = current.GetNext()
-                    self.head.SetPrev(None)
+                    self.head = current.get_next()
+                    self.head.set_prev(None)
                 elif current is self.tail:
                     self.tail = current.GetPrev()
-                    self.tail.SetNext(None)
+                    self.tail.set_next(None)
                 else:
-                    current.GetPrev().SetNext(current.GetNext())
-                    current.GetNext().SetPrev(current.GetPrev())
+                    current.GetPrev().set_next(current.get_next())
+                    current.get_next().set_prev(current.GetPrev())
                 self.size -= 1
                 return True
-            current = current.GetNext()
+            current = current.get_next()
         return False
 
-    def Sort(self):
-        if not self.head:
-            return
-        sorted = False
-        while not sorted:
-            sorted = True
-            current = self.head
+    def sort(self):
+        #this dont work, it sorts fine but it doesnt set the tail to the correct value
+        sorted_list = DLL()
+        sorted_list.head = self.head
+        sorted_list.tail = self.tail
+        while True:
+            if self.is_sorted():
+                self.head = sorted_list.head
+                self.tail = sorted_list.tail
+                break
+            if not self.is_empty():
+                sorted_list = DLL()
+                current = self.head
+                while current is not None:
+                    node = DNode(current.get_data())
+                    sorted_list.sorted_insert(node)
+                    current = current.get_next()
+                self.head = sorted_list.head
+                self.tail = sorted_list.tail
+        self = sorted_list
+    
+    def is_sorted(self):
+        # if self.sorted:
+        #     return True
+        current = self.head
+        while current is not None and current.get_next() is not None:
+            if current.get_data() > current.get_next().get_data():
+                return False
+            current = current.get_next()
+        self.sorted = True
+        return True
+    
+    def clear(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+        self.sorted = True
+
+
+    def Print(self):
+        self.is_sorted()
+        print(f"List length: {self.size}")
+        print(f"Sorted status: {'Sorted' if self.sorted else 'Unsorted'}")
+        print("List content:")
+        current = self.head
+        while current:
+            print(current.get_data())
+            current = current.get_next()
