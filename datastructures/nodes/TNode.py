@@ -10,7 +10,7 @@ class TNode:
         self.R = R
 
     @classmethod
-    def TNode(cls, data, balance, P, L, R):
+    def TNode(cls, data, balance=0, P=None, L=None, R=None):
         return cls(data, balance, P, L , R)
 
     def setData(self, data):
