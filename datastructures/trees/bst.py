@@ -27,8 +27,6 @@ class BST:
         else:
             new_node = input
 
-        height = 0
-
         if self.root is None:
             self.root = new_node
             return
@@ -36,11 +34,9 @@ class BST:
         current_node = self.root
 
         while True:
-            height += 1
             if new_node.data < current_node.data:
                 if current_node.L is None:
                     new_node.setP(current_node)
-                    new_node.setBalance(height)
                     current_node.L = new_node
                     return
                 else:
@@ -48,7 +44,6 @@ class BST:
             elif new_node.data > current_node.data:
                 if current_node.R is None:
                     new_node.setP(current_node)
-                    new_node.setBalance(height)
                     current_node.R = new_node
                     return
                 else:
