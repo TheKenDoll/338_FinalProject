@@ -1,5 +1,6 @@
 from nodes.SNode import SNode
-from SLL import SLL
+from linear.SLL import SLL
+
 
 
 class CSLL(SLL):
@@ -9,31 +10,94 @@ class CSLL(SLL):
     def InsertTail(self, node):
         if not self.head:
             self.head = node
-            self.head.SetNext(self.head)
+            self.head.set_next(self.head)
         else:
             current = self.head
-            while current.GetNext() != self.head:
-                current = current.GetNext()
-            current.SetNext(node)
-            node.SetNext(self.head)
+            while current.get_next() != self.head:
+                current = current.get_next()
+            current.set_next(node)
+            node.set_next(self.head)
+        self.size += 1
+    
+    def InsertHead(self, node):
+        if not isinstance(node, SNode):
+            raise TypeError("node argument must be an SNode object")
+        if self.size == 0:
+            node.next = node
+        else:
+            node.next = self.head
+        self.head = node
         self.size += 1
 
     def Delete(self, node):
         if not self.head:
             return
         if self.head == node:
-            if self.head.GetNext() == self.head:
+            if self.head.get_next() == self.head:
                 self.head = None
             else:
-                self.head = self.head.GetNext()
+                self.head = self.head.get_next()
             self.size -= 1
             return
         prev = self.head
-        current = self.head.GetNext()
+        current = self.head.get_next()
         while current != self.head:
             if current == node:
-                prev.SetNext(current.GetNext())
+                prev.set_next(current.get_next())
                 self.size -= 1
                 return
             prev = current
-            current = current.GetNext()
+            current = current.get_next()
+    
+    def display(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            print(current.get_data(), end=' -> ')
+            current = current.get_next()
+            count += 1
+            if count >= self.size:
+                break
+            
+        print("Repeat")
+
+    def Print(self):
+        self.is_sorted()
+        print(f"List length: {self.size}")
+        print(f"Sorted status: {'Sorted' if self.sorted else 'Unsorted'}")
+        print("List content:")
+        current = self.head
+        count = 0
+        while current:
+            print(current.get_data())
+            current = current.get_next()
+            count += 1
+            if count >= self.size:
+                break
+        
+    def sort(self):
+        if not self.is_empty() and not self.is_sorted():
+            sorted_list = SLL()
+            current = self.head
+            count = 0
+            while current is not None:
+                if count >= self.size:
+                    break
+                node = SNode(current.get_data())
+                sorted_list.sorted_insert(node)
+                current = current.get_next()
+
+                count += 1
+            self.head = sorted_list.head
+
+
+    def sorted_insert(self, node):
+        if self.is_empty() or node.get_data() < self.head.get_data():
+            self.insert_head(node)
+        else:
+            current = self.head
+            while current.get_next() is not None and current.get_next().get_data() < node.get_data():
+                current = current.get_next()
+            node.set_next(current.get_next())
+            current.set_next(node)
+        self.size += 1

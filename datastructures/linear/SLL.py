@@ -2,12 +2,9 @@ from nodes.SNode import SNode
 
 class SLL:
     def __init__(self, head=None):
-        if head is None:
-            self.head = None
-        elif isinstance(head, SNode):
-            self.head = head
-        else:
-            raise TypeError("head argument must be an SNode object or None")
+        self.head = head
+        self.size = 0
+        self.sorted = self.is_sorted
             
     def __str__(self):
         nodes = []
@@ -24,6 +21,7 @@ class SLL:
             raise TypeError("node argument must be an SNode object")
         node.next = self.head
         self.head = node
+        self.size += 1
         
     def InsertTail(self, node):
         if not isinstance(node, SNode):
@@ -35,6 +33,7 @@ class SLL:
             while current_node.next is not None:
                 current_node = current_node.next
             current_node.next = node
+        self.size += 1
             
     def Insert(self, node, position):
         if not isinstance(node, SNode):
@@ -53,6 +52,7 @@ class SLL:
                 raise ValueError("position argument out of range")
             node.next = current_node.next
             current_node.next = node
+        self.size += 1
     
     def SortedInsert(self, node):
         if not isinstance(node, SNode):
@@ -65,6 +65,7 @@ class SLL:
                 current_node = current_node.next
             node.next = current_node.next
             current_node.next = node
+        self.size += 1
     
     def __str__(self):
         nodes = []
@@ -142,6 +143,7 @@ class SLL:
     def delete_head(self):
         if not self.is_empty():
             self.head = self.head.get_next()
+        self.size -= 1
     
     def delete_tail(self):
         if not self.is_empty():
@@ -152,6 +154,7 @@ class SLL:
                 while current.get_next().get_next() is not None:
                     current = current.get_next()
                 current.set_next(None)
+        self.size -= 1
     
     def delete(self, node):
         if not self.is_empty():
@@ -165,6 +168,7 @@ class SLL:
                     current.set_next(current.get_next().get_next())
                 else:
                     print("Node not found in the list.")
+        self.size -= 1
     
     def sort(self):
         if not self.is_empty() and not self.is_sorted():
@@ -180,20 +184,23 @@ class SLL:
         current = self.head
         while current is not None and current.get_next() is not None:
             if current.get_data() > current.get_next().get_data():
+                self.sorted = False
                 return False
             current = current.get_next()
+        self.sorted = True
         return True
 
-    def Clear(self):
+    def clear(self):
         self.head = None
         self.size = 0
         self.sorted = True
 
     def Print(self):
+        self.is_sorted()
         print(f"List length: {self.size}")
         print(f"Sorted status: {'Sorted' if self.sorted else 'Unsorted'}")
         print("List content:")
         current = self.head
         while current:
-            print(current.GetData())
-            current = current.GetNext()
+            print(current.get_data())
+            current = current.get_next()

@@ -1,5 +1,5 @@
 from nodes.SNode import SNode
-from SLL import SLL
+from linear.SLL import SLL
 
 
 class Stack(SLL):
@@ -14,7 +14,7 @@ class Stack(SLL):
             return None
         else:
             node = self.head
-            self.head = self.head.GetNext()
+            self.head = self.head.get_next()
             self.size -= 1
             return node
 

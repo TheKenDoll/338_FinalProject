@@ -1,7 +1,7 @@
-from nodes.DNode import DNode
-from DLL import DLL
 
-class Queue(DLL):
+from linear.SLL import SLL
+
+class Queue(SLL):
     def __init__(self):
         super().__init__()
 
@@ -9,11 +9,22 @@ class Queue(DLL):
         super().InsertHead(node)
 
     def dequeue(self):
-        if not self.tail:
-            return None
-        data = self.tail.GetData()
-        self.DeleteTail()
-        return data
+        if self.size == 1:
+            node = self.head
+            self.head = None
+            self.size -= 1
+            return node
+        second_last = self.head
+        last = self.head.get_next()
+        while True:
+
+            second_last = last
+            
+            if last.get_next() == None:
+                break
+            last = last.get_next()
+        self.delete_tail()
+        return second_last
 
     # Overriding methods with empty bodies
     def InsertTail(self, node):

@@ -10,69 +10,116 @@ from linear.QueueLL import Queue
 # Create a singly linked list
 sll = SLL()
 
-# Insert some nodes
-sll.InsertHead(SNode(1))
-sll.InsertTail(SNode(2))
-sll.InsertTail(SNode(3))
+# # Insert some nodes
+# sll.InsertHead(SNode(1))
+# sll.InsertTail(SNode(5))
+# sll.InsertTail(SNode(3))
+# sll.InsertHead(SNode(7))
+# sll.InsertTail(SNode(99))
+# sll.InsertTail(SNode(0))
 
-# Print the list
-sll.Print()
 
-# Create a doubly linked list
-dll = DLL()
+# # Print the list
+# print("SINGLY LINKED LIST")
+# sll.Print()
+# sll.display()
 
-# Insert some nodes
-dll.InsertHead(DNode(1))
-dll.InsertTail(DNode(2))
-dll.InsertTail(DNode(3))
+# # Create a doubly linked list
+# dll = DLL()
 
-# Print the list
-dll.Print()
+# # Insert some nodes
+# dll.InsertHead(DNode(1))
+# dll.InsertTail(DNode(5))
+# dll.InsertTail(DNode(3))
+# dll.InsertTail(DNode(7))
+# dll.InsertTail(DNode(99))
+# dll.InsertTail(DNode(0))
 
-# Create a circular singly linked list
-scll = CSLL()
+# # Print the list
+# print("DOUBLY LINKED LIST")
+# dll.Print()
+# dll.display()
 
-# Insert some nodes
-scll.InsertHead(SNode(1))
-scll.InsertTail(SNode(2))
-scll.InsertTail(SNode(3))
 
-# Print the list
-scll.Print()
 
-# Create a circular doubly linked list
-cdll = CDLL()
+# print("DOUBLY LINKED LIST")
+# dll.sort()
+# dll.sorted_insert(DNode(6))
+# dll.Print()
+# dll.display()
 
-# Insert some nodes
-cdll.InsertHead(DNode(1))
-cdll.InsertTail(DNode(2))
-cdll.InsertTail(DNode(3))
+# # Create a circular singly linked list
+# scll = CSLL()
 
-# Print the list
-cdll.Print()
+# # Insert some nodes
+# scll.InsertHead(SNode(1))
+# scll.InsertTail(SNode(2))
+# scll.InsertTail(SNode(3))
+# scll.InsertTail(SNode(43))
+# scll.InsertTail(SNode(6))
+# scll.InsertTail(SNode(99))
 
-# Create a stack
-stack = Stack()
+# # Print the list
+# print("CIRCULAR SINGLY LINKED LIST")
+# scll.Print()
+# scll.display()
 
-# Push some nodes
-stack.push(SNode(1))
-stack.push(SNode(2))
-stack.push(SNode(3))
+# print("CIRCULAR SINGLY LINKED LIST")
+# scll.sort()
+# scll.sorted_insert(SNode(5))
+# scll.Print()
+# scll.display()
 
-# Pop some nodes
-print(stack.pop().GetData())
-print(stack.pop().GetData())
-print(stack.pop().GetData())
+# # Create a circular doubly linked list
+# cdll = CDLL()
 
-# Create a queue
-queue = Queue()
+# # Insert some nodes
+# cdll.InsertHead(DNode(1))
+# cdll.InsertTail(DNode(4))
+# cdll.InsertTail(DNode(96))
+# cdll.InsertTail(DNode(6))
+# cdll.InsertTail(DNode(99))
+# cdll.InsertTail(DNode(68))
 
-# Enqueue some nodes
-queue.enqueue(SNode(1))
-queue.enqueue(SNode(2))
-queue.enqueue(SNode(3))
+# # Print the list
+# print("CIRCULAR DOUBLY LINKED LIST")
+# cdll.Print()
+# cdll.display()
 
-# Dequeue some nodes
-print(queue.dequeue().GetData())
-print(queue.dequeue().GetData())
-print(queue.dequeue().GetData())
+# print("CIRCULAR DOUBLY LINKED LIST")
+# cdll.sort()
+# cdll.sorted_insert(DNode(10))
+# cdll.Print()
+# cdll.display()
+
+
+# # Create a stack
+# stack = Stack()
+
+# # Push some nodes
+# stack.push(SNode(1))
+# stack.push(SNode(2))
+# stack.push(SNode(3))
+
+# # Pop some nodes
+# print("STACK")
+# stack.display()
+# print(stack.pop().get_data())
+# print(stack.pop().get_data())
+# print(stack.pop().get_data())
+
+# # Create a queue
+# queue = Queue()
+
+# # Enqueue some nodes
+
+# queue.enqueue(SNode(1))
+# queue.enqueue(SNode(2))
+# queue.enqueue(SNode(3))
+
+# # Dequeue some nodes
+# print("QUEUE")
+# queue.display()
+# print(queue.dequeue().get_data())
+# print(queue.dequeue().get_data())
+# print(queue.dequeue().get_data())
