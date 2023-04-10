@@ -1,16 +1,16 @@
-from mylib.datastructures.nodes.DNode import DNode
-from mylib.datastructures.nodes.SNode import SNode
-from mylib.datastructures.linear.SLL import SLL
+from mylibKIv1.datastructures.nodes.DNode import DNode
+from mylibKIv1.datastructures.nodes.SNode import SNode
+from mylibKIv1.datastructures.linear.SLL import SLL
 
-from mylib.datastructures.linear.DLL import DLL
-from mylib.datastructures.linear.CSLL import CSLL
-from mylib.datastructures.linear.CDLL import CDLL
-from mylib.datastructures.linear.StackLL import Stack
-from mylib.datastructures.linear.QueueLL import Queue
+from mylibKIv1.datastructures.linear.DLL import DLL
+from mylibKIv1.datastructures.linear.CSLL import CSLL
+from mylibKIv1.datastructures.linear.CDLL import CDLL
+from mylibKIv1.datastructures.linear.StackLL import Stack
+from mylibKIv1.datastructures.linear.QueueLL import Queue
 
-from mylib.datastructures.trees.avl import AVL
-from mylib.datastructures.trees.bst import BST
-from mylib.datastructures.nodes.TNode import TNode
+from mylibKIv1.datastructures.trees.avl import AVL
+from mylibKIv1.datastructures.trees.bst import BST
+from mylibKIv1.datastructures.nodes.TNode import TNode
 
 
 

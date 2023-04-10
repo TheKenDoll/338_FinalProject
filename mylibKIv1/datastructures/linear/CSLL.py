@@ -1,5 +1,5 @@
-from mylib.datastructures.nodes.SNode import SNode
-from mylib.datastructures.linear.SLL import SLL
+from mylibKIv1.datastructures.nodes.SNode import SNode
+from mylibKIv1.datastructures.linear.SLL import SLL
 
 
 

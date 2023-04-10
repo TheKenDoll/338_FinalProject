@@ -1,0 +1,9 @@
+README.md
+setup.py
+mylibKIv1/__init__.py
+mylibKIv1/setup.py
+mylibKIv1.egg-info/PKG-INFO
+mylibKIv1.egg-info/SOURCES.txt
+mylibKIv1.egg-info/dependency_links.txt
+mylibKIv1.egg-info/top_level.txt
+mylibKIv1/datastructures/__init__.py

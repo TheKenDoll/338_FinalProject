@@ -1,7 +1,7 @@
 # AVL tree
 
-from mylib.datastructures.nodes.TNode import TNode
-from mylib.datastructures.trees.bst import BST
+from mylibKIv1.datastructures.nodes.TNode import TNode
+from mylibKIv1.datastructures.trees.bst import BST
 
 class AVL(BST):
 

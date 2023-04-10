@@ -1,4 +1,4 @@
-from mylib.datastructures.nodes.SNode import SNode
+from mylibKIv1.datastructures.nodes.SNode import SNode
 
 class SLL:
     def __init__(self, head=None):
