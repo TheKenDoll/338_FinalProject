@@ -96,7 +96,7 @@ class BST:
         
     # make print out nicer?
     def printInOrder(self):
-        self._printInOrder(self.root)
+        return self._printInOrder(self.root)
 
     def _printInOrder(self, cur_node):
         if cur_node is not None:

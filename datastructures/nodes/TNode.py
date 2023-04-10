@@ -43,8 +43,9 @@ class TNode:
 
     def print(self):
         if self.balance == None:
-            return "Does not exist in tree"
-        return f"Data: {self.data}, Balance: {self.balance}, P: {self.P}, L: {self.L}, R: {self.R}"
+            print("Does not exist in tree")
+            return
+        print(f"Data: {self.data}, Balance: {self.balance}, P: {self.P}, L: {self.L}, R: {self.R}")
     
     def toString(self):
         return str(self.data)

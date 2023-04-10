@@ -27,7 +27,7 @@ class AVL(BST):
         return self.root
     
     def Insert(self, input):
-        super().insert(input)
+        super().Insert(input)
         AVL.update_balances(self.root)
         self.root = AVL.rebalance(self.root)
 
@@ -64,10 +64,10 @@ class AVL(BST):
         return cur_node
     
     def Search(self, val):
-        super().Search(val)
+        return super().Search(val)
 
     def printInOrder(self):
-        super().printInOrder()
+        return super().printInOrder()
 
     def printBF(self):
         super().printBF()
@@ -140,8 +140,8 @@ class AVL(BST):
         new_root.balance = new_root.balance - 1 + min(node.balance, 0)
         if node.L is not None:
             node.L.P = node
-        if node.P is not None:
-            node.P.L = new_root
+        # if node.P is not None:
+        #     node.P.L = new_root
         new_root.P = node.P
         node.P = new_root
         return new_root
