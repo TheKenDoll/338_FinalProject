@@ -9,9 +9,10 @@ class AVL(BST):
         super().__init__(root)
 
     @classmethod
-    def DataAVL(cls, val):
-        root = TNode.TNode(val)
-        return cls(root)
+    def AVL(cls, input):
+        if isinstance(input, int):
+            input = TNode.TNode(input)
+        return cls(input)
     
     @classmethod
     def NodeAVL(cls, obj):
@@ -25,12 +26,12 @@ class AVL(BST):
     def getRoot(self):
         return self.root
     
-    def insert(self, input):
+    def Insert(self, input):
         super().insert(input)
         AVL.update_balances(self.root)
         self.root = AVL.rebalance(self.root)
 
-    def delete(self, val):
+    def Delete(self, val):
         self.root = self._delete(self.root, val)
 
     def _delete(self, cur_node, val):
@@ -61,6 +62,9 @@ class AVL(BST):
         while cur_node.L is not None:
             cur_node = cur_node.L
         return cur_node
+    
+    def Search(self, val):
+        super().Search(val)
 
     def printInOrder(self):
         super().printInOrder()
@@ -136,8 +140,8 @@ class AVL(BST):
         new_root.balance = new_root.balance - 1 + min(node.balance, 0)
         if node.L is not None:
             node.L.P = node
-        # if node.P is not None:
-        #     node.P.L = new_root
+        if node.P is not None:
+            node.P.L = new_root
         new_root.P = node.P
         node.P = new_root
         return new_root

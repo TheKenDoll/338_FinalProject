@@ -6,13 +6,10 @@ class BST:
         self.root = root
 
     @classmethod
-    def DataBST(cls, val):
-        root = TNode.TNode(val)
-        return cls(root)
-
-    @classmethod
-    def NodeBST(cls, obj):
-        return cls(obj)
+    def BST(cls, input):
+        if isinstance(input, int):
+            input = TNode.TNode(input)
+        return cls(input)
     
     def setRoot(self, newRoot):
         self.root = newRoot
@@ -20,7 +17,7 @@ class BST:
     def getRoot(self):
         return self.root
     
-    def insert(self, input):
+    def Insert(self, input):
 
         if isinstance(input, int):
             new_node = TNode.TNode(input)
@@ -52,7 +49,7 @@ class BST:
                 return
 
 
-    def delete(self, val):
+    def Delete(self, val):
         self.root = self._delete(self.root, val)
 
     def _delete(self, cur_node, val):
@@ -84,7 +81,7 @@ class BST:
             cur_node = cur_node.L
         return cur_node
             
-    def search(self, val):
+    def Search(self, val):
         return self._search(val, self.root)
 
     def _search(self, val, cur_node):
