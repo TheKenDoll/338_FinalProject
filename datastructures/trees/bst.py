@@ -6,7 +6,12 @@ class BST:
         self.root = root
 
     @classmethod
-    def BST(cls, obj):
+    def DataBST(cls, val):
+        root = TNode.TNode(val)
+        return cls(root)
+
+    @classmethod
+    def NodeBST(cls, obj):
         return cls(obj)
     
     def setRoot(self, newRoot):
@@ -84,7 +89,7 @@ class BST:
 
     def _search(self, val, cur_node):
         if cur_node is None:
-            return TNode.TNode(balance=-1)
+            return TNode.TNode(data=0,balance=None)
         elif cur_node.data == val:
             return cur_node
         elif val < cur_node.data:
@@ -111,7 +116,7 @@ class BST:
         while cur_level:
             next_level = []
             for node in cur_level:
-                print(f"{node.data} ({node.balance})", end=" ")
+                print(node.data, end=" ")
                 if node.L:
                     next_level.append(node.L)
                 if node.R:
