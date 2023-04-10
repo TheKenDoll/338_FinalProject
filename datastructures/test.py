@@ -7,6 +7,10 @@ from linear.CDLL import CDLL
 from linear.StackLL import Stack
 from linear.QueueLL import Queue
 
+from trees.avl import AVL
+from trees.bst import BST
+from nodes.TNode import TNode
+
 # Create a singly linked list
 sll = SLL()
 
@@ -123,3 +127,30 @@ sll = SLL()
 # print(queue.dequeue().get_data())
 # print(queue.dequeue().get_data())
 # print(queue.dequeue().get_data())
+
+
+
+# Testing trees
+#------------------------------------------
+
+bst = BST()
+
+# bst.insert(10)
+# bst.insert(5)
+# bst.insert(3)
+# bst.insert(7)
+# bst.insert(12)
+# bst.insert(15)
+
+# bst.printBF()
+
+avl = AVL()
+
+avl.insert(10)
+avl.printBF()
+input()
+avl.insert(11)
+avl.printBF()
+input()
+avl.insert(12)
+avl.printBF()

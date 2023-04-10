@@ -1,6 +1,4 @@
 
-
-
 class TNode:
     def __init__(self, data=None, balance=0, P=None, L=None, R=None) -> None:
         self.data = data

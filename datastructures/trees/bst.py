@@ -1,17 +1,12 @@
 # Binary Search Tree
-import TNode
+from nodes.TNode import TNode
 
 class BST:
     def __init__(self, root=None) -> None:
         self.root = root
 
     @classmethod
-    def DataBST(cls, val):
-        root = TNode.TNode(val)
-        return cls(root)
-
-    @classmethod
-    def NodeBST(cls, obj):
+    def BST(cls, obj):
         return cls(obj)
     
     def setRoot(self, newRoot):
@@ -116,22 +111,10 @@ class BST:
         while cur_level:
             next_level = []
             for node in cur_level:
-                print(node.data, end=" ")
+                print(f"{node.data} ({node.balance})", end=" ")
                 if node.L:
                     next_level.append(node.L)
                 if node.R:
                     next_level.append(node.R)
             print()
             cur_level = next_level
-
-if __name__ == "__main__":
-    node1 = BST.DataBST(10)
-    print(node1.getRoot().print())
-    node1.insert(5)
-    node1.insert(7)
-    node1.insert(6)
-    node1.insert(8)
-    node1.insert(11)
-    node1.insert(14)
-    node1.insert(13)
-    node1.printBF()
