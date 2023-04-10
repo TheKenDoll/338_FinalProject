@@ -1,4 +1,4 @@
-from nodes.SNode import SNode
+from mylib.datastructures.nodes.SNode import SNode
 
 class SLL:
     def __init__(self, head=None):

@@ -1,5 +1,5 @@
 # Binary Search Tree
-from nodes.TNode import TNode
+from mylib.datastructures.nodes.TNode import TNode
 
 class BST:
     def __init__(self, root=None) -> None:

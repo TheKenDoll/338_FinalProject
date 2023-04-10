@@ -1,5 +1,5 @@
-from nodes.SNode import SNode
-from linear.SLL import SLL
+from mylib.datastructures.nodes.SNode import SNode
+from mylib.datastructures.linear.SLL import SLL
 
 
 class Stack(SLL):

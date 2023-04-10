@@ -1,5 +1,5 @@
-from nodes.DNode import DNode
-from linear.DLL import DLL
+from mylib.datastructures.nodes.DNode import DNode
+from mylib.datastructures.linear.DLL import DLL
 
 
 class CDLL(DLL):

@@ -1,4 +1,4 @@
-from nodes.DNode import DNode
+from mylib.datastructures.nodes.DNode import DNode
 
 
 class DLL:

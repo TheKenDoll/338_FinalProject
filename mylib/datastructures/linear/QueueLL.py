@@ -1,5 +1,5 @@
 
-from linear.SLL import SLL
+from mylib.datastructures.linear.SLL import SLL
 
 class Queue(SLL):
     def __init__(self):

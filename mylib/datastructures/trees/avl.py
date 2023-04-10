@@ -1,7 +1,7 @@
 # AVL tree
 
-from nodes.TNode import TNode
-from trees.bst import BST
+from mylib.datastructures.nodes.TNode import TNode
+from mylib.datastructures.trees.bst import BST
 
 class AVL(BST):
 
@@ -13,10 +13,6 @@ class AVL(BST):
         if isinstance(input, int):
             input = TNode.TNode(input)
         return cls(input)
-    
-    @classmethod
-    def NodeAVL(cls, obj):
-        return cls(obj)
 
     def setRoot(self, node):
         self.root = node
