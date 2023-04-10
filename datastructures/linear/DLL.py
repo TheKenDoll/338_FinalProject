@@ -35,13 +35,6 @@ class DLL:
         self.size += 1
         self.sorted = False
 
-    def display(self):
-        current = self.head
-        while current is not None:
-            print(current.get_data(), end=' -> ')
-            current = current.get_next()
-        print("None")
-
     def Insert(self, node, position):
         if position <= 0:
             self.InsertHead(node)
@@ -60,7 +53,7 @@ class DLL:
             self.size += 1
             self.sorted = False
 
-    def sorted_insert(self, node):
+    def SortedInsert(self, node):
         if not self.head:
             self.InsertHead(node)
         elif self.sorted and node.get_data() < self.head.get_data():
@@ -112,9 +105,6 @@ class DLL:
             self.tail = self.tail.GetPrev()
             self.tail.set_next(None)
         self.size -= 1
-    
-    def is_empty(self):
-        return self.head is None
 
     def Delete(self, node):
         current = self.head
@@ -134,7 +124,7 @@ class DLL:
             current = current.get_next()
         return False
 
-    def sort(self):
+    def Sort(self):
         #this dont work, it sorts fine but it doesnt set the tail to the correct value
         sorted_list = DLL()
         sorted_list.head = self.head
@@ -149,12 +139,41 @@ class DLL:
                 current = self.head
                 while current is not None:
                     node = DNode(current.get_data())
-                    sorted_list.sorted_insert(node)
+                    sorted_list.SortedInsert(node)
                     current = current.get_next()
                 self.head = sorted_list.head
                 self.tail = sorted_list.tail
         sorted_list.find_tail()
         self.tail = sorted_list.get_tail()
+    
+    def Clear(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+        self.sorted = True
+
+    def Print(self):
+        self.is_sorted()
+        print(f"List length: {self.size}")
+        print(f"Sorted status: {'Sorted' if self.sorted else 'Unsorted'}")
+        print("List content:")
+        current = self.head
+        while current:
+            print(current.get_data())
+            current = current.get_next()
+  
+
+# HELPER FUNCTIONS
+    def display(self):
+        current = self.head
+        while current is not None:
+            print(current.get_data(), end=' -> ')
+            current = current.get_next()
+        print("None")
+
+   
+    def is_empty(self):
+        return self.head is None
     
     def is_sorted(self):
         # if self.sorted:
@@ -166,24 +185,8 @@ class DLL:
             current = current.get_next()
         self.sorted = True
         return True
-    
-    def clear(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
-        self.sorted = True
 
-
-    def Print(self):
-        self.is_sorted()
-        print(f"List length: {self.size}")
-        print(f"Sorted status: {'Sorted' if self.sorted else 'Unsorted'}")
-        print("List content:")
-        current = self.head
-        while current:
-            print(current.get_data())
-            current = current.get_next()
-    
+   
     def find_tail(self):
         current_node = self.head
         while current_node.get_next() is not None:

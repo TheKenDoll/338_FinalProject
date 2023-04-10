@@ -46,29 +46,6 @@ class CDLL(DLL):
             node.GetNext().set_prev(node.GetPrev())
             self.size -= 1
 
-    def Sort(self):
-        if not self.head or self.size <= 1:
-            return
-        current = self.head.GetNext()
-        while current is not self.head:
-            temp = current.GetPrev()
-            while temp is not self.head.GetPrev() and temp.GetData() > current.GetData():
-                temp = temp.GetPrev()
-            if temp is not current.GetPrev():
-                current.GetPrev().GetNext().set_prev(current.GetNext())
-                current.GetNext().set_prev(current.GetPrev())
-                if temp is self.head:
-                    current.set_next(self.head)
-                    self.head.set_prev(current)
-                    self.head = current
-                else:
-                    current.GetPrev().set_next(current.GetNext())
-                    current.GetNext().set_prev(current.GetPrev())
-                    current.set_next(temp)
-                    temp.set_prev(current)
-                current = current.GetPrev()
-            current = current.GetNext()
-        self.sorted = True
     
 
     def display(self):
@@ -98,7 +75,7 @@ class CDLL(DLL):
                 break
 
         
-    def sort(self):
+    def Sort(self):
         for i in range(self.size):
             if not self.is_empty() and not self.is_sorted():
                 sorted_list = DLL()
@@ -108,9 +85,35 @@ class CDLL(DLL):
                     if count >= self.size:
                         break
                     node = DNode(current.get_data())
-                    sorted_list.sorted_insert(node)
+                    sorted_list.SortedInsert(node)
                     current = current.get_next()
 
                     count += 1
                 self.head = sorted_list.head
 
+
+
+# NOT NEEDED
+    # def Sort(self):
+    #     if not self.head or self.size <= 1:
+    #         return
+    #     current = self.head.GetNext()
+    #     while current is not self.head:
+    #         temp = current.GetPrev()
+    #         while temp is not self.head.GetPrev() and temp.GetData() > current.GetData():
+    #             temp = temp.GetPrev()
+    #         if temp is not current.GetPrev():
+    #             current.GetPrev().GetNext().set_prev(current.GetNext())
+    #             current.GetNext().set_prev(current.GetPrev())
+    #             if temp is self.head:
+    #                 current.set_next(self.head)
+    #                 self.head.set_prev(current)
+    #                 self.head = current
+    #             else:
+    #                 current.GetPrev().set_next(current.GetNext())
+    #                 current.GetNext().set_prev(current.GetPrev())
+    #                 current.set_next(temp)
+    #                 temp.set_prev(current)
+    #             current = current.GetPrev()
+    #         current = current.GetNext()
+    #     self.sorted = True
