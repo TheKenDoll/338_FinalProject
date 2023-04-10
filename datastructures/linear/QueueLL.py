@@ -23,7 +23,7 @@ class Queue(SLL):
             if last.get_next() == None:
                 break
             last = last.get_next()
-        self.delete_tail()
+        self.DeleteTail()
         return second_last
 
     # Overriding methods with empty bodies
